@@ -37,7 +37,6 @@ const createProduct = (request, response) => {
         _id: mongoose.Types.ObjectId(),
         name: bodyRequest.name,
         description: bodyRequest.description,
-        type: bodyRequest.type,
         imageUrl: bodyRequest.imageUrl,
         buyPrice: bodyRequest.buyPrice,
         promotionPrice: bodyRequest.promotionPrice,
@@ -78,7 +77,7 @@ const getAllProduct = (request, response) => {
         else { condition.type = { $in: [type] } }
     }
 
-    if (minPrice) {
+    if (minPrice) { 
         condition.promotionPrice = {
             ...condition.promotionPrice,
             $gte: minPrice
